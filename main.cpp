@@ -27,17 +27,17 @@ int main(){
     inp.close();
     
     
-    std::map<int, Creator*> factory;
-    factory[0] = new ConcreteCreator0;
-    factory[1] = new ConcreteCreator1;
+    std::map<std::string, Creator*> factory;
+    factory["Hori"] = new ConcreteCreator0;
+    factory["Vert"] = new ConcreteCreator1;
     auto m_it0 = factory.begin();
-    auto m_it1 = m_it0++;
+   // auto m_it1 = m_it0++;
     
     
     //std::vector<std::string> file_names; //имена файлов для вывода
     //CIntN** arr = new CIntN*[count]; //массив указателей класса
-    std::vector<CIntN*> arr(count);
-    auto v_it = arr.begin();
+    std::vector<CIntN*> arr; //iiiiii
+   // auto v_it = arr.begin();
     
     inp.open(file);
     size_t i = 0;
@@ -48,7 +48,7 @@ int main(){
         inp >> FileName;
         std::string num;
         inp >> num;
-        if(I == "Hori"){
+        /*if(I == "Hori"){
             if (i < count) {
                 int l =static_cast<int>(num.size());
                 if (num[0]=='-') l--;
@@ -66,19 +66,24 @@ int main(){
                 (*v_it)->new_file_name(FileName);
                 ++v_it;
             }
-        }
+        }*/
        // file_names.push_back(FileName);
-        ++i;
+        
+        int l =static_cast<int>(num.size());
+        auto curCreator = factory.find(I);
+        if (curCreator == factory.end()) {
+            std::cerr << "Error! Wrong number type!\n";
+            return 1;
+        }
+        arr.push_back(curCreator->second->factoryMethod(l, num));
+        
+        arr[arr.size()-1]->new_file_name(FileName);
+        
+        if (i < arr.size()) ++i;
+        
     }
     inp.close();
-    
-    /*CIntN0 a(2, "45");
 
-    CIntN1 b(3, "100");
-
-    CIntN c = a  + b;
-    c.print();
-    */
 
     
     for(std::vector<CIntN*>::iterator it = arr.begin(); it != arr.end(); ++it){

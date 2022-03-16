@@ -7,6 +7,8 @@ class CIntN1 : public CIntN{
 public:
     using CIntN::CIntN;
     using CIntN::operator=;
+    CIntN1() : CIntN() {
+    }
     CIntN1(const CIntN& A) : CIntN(A) {};
     
     void print(){

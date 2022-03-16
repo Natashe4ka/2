@@ -30,7 +30,7 @@ int AutoTest3(){
     arr[0]->new_file_name("AT.txt");
     
     //arr[0]->print("AT.txt");
-   // arr[1]->new_file_name("/Users/nataliasafonova/Desktop/c++4/1/n.1/n.1/AT.txt");
+    //arr[1]->new_file_name("/Users/nataliasafonova/Desktop/c++4/1/n.1/n.1/AT.txt");
     
     arr[1]->new_file_name("AT.txt");
     
@@ -52,7 +52,7 @@ int AutoTest3(){
         if (line==f || line==s || line==th || line==forth)  flag++;
         
     }
-  //remove ("/Users/nataliasafonova/Desktop/c++4/1/n.1/n.1/AT.txt");
+   // remove ("/Users/nataliasafonova/Desktop/c++4/1/n.1/n.1/AT.txt");
     remove ("AT.txt");
     if (flag==4) return 1;
     else return 0;
